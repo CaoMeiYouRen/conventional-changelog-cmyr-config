@@ -1,5 +1,4 @@
 'use strict'
-const defaults = require('defaults')
 const compareFunc = require('compare-func')
 const Q = require('q')
 const readFile = Q.denodeify(require('fs').readFile)
@@ -114,7 +113,7 @@ const defaultOptions = {
     authorEmail: false,
     settings: _settings
 }
-const { bugsUrl, authorName, authorEmail, settings } = defaults(changelog, defaultOptions)
+const { bugsUrl, authorName, authorEmail, settings } = Object.assign(defaultOptions, changelog)
 
 let gitUserInfo = ''
 if (authorName && authorEmail) {
