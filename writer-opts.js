@@ -168,15 +168,14 @@ function getWriterOpts() {
 
             if (commit.revert) {
                 commit.type = settings[commit.type].title
-            } else if (requiredOption.includes(commit.type)) { // 以上为必须，以下为可选
+            } else if (requiredOption.includes(commit.type)) {
                 commit.type = settings[commit.type].title
-            } else if (optionalOptions.includes(commit.type)) {
+            } else if (optionalOptions.includes(commit.type)) { // 以上为必须，以下为可选
                 if (settings[commit.type].enable) {
                     commit.type = settings[commit.type].title
-                } else {// disable 时直接 return
-                    return
                 }
             } else if (discard) {
+                return
             } else {
                 return
             }
