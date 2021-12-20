@@ -1,5 +1,17 @@
 # conventional-changelog-cmyr-config
 
+# [2.0.0](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v1.0.1...v2.0.0) (2021-12-20)
+
+
+### 🐛 Bug 修复
+
+* 修复 可选选项 无效的问题 ([aacfbe8](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/aacfbe8))
+
+
+### BREAKING CHANGES
+
+* 项目整体迁移到 semantic-release，版本号管理出现问题，故进行大版本升级
+
 ## [1.3.1](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v1.0.0...v1.0.1) (2021-12-20)
 
 
