@@ -1,5 +1,4 @@
 'use strict'
-const defaults = require('defaults')
 const compareFunc = require('compare-func')
 const Q = require('q')
 const readFile = Q.denodeify(require('fs').readFile)
@@ -14,7 +13,7 @@ try {
     console.error('no root package.json found')
 }
 
-const { changelog } = pkgJson
+const { changelog = {} } = pkgJson
 const en = {
     feat: {
         title: '✨ Features',
@@ -114,7 +113,14 @@ const defaultOptions = {
     authorEmail: false,
     settings: _settings
 }
-const { bugsUrl, authorName, authorEmail, settings } = defaults(changelog, defaultOptions)
+const { bugsUrl, authorName, authorEmail } = {
+    ...defaultOptions,
+    ...changelog,
+}
+const settings = {
+    ...defaultOptions.settings,
+    ...changelog.settings || {}
+}
 
 let gitUserInfo = ''
 if (authorName && authorEmail) {
@@ -148,10 +154,14 @@ function getWriterOpts() {
             let discard = true
             const issues = []
 
-            commit.notes.forEach(note => {
+            if (commit.notes.length > 0) {
                 note.title = 'BREAKING CHANGES'
                 discard = false
-            })
+            }
+            // commit.notes.forEach(note => {
+            //     note.title = 'BREAKING CHANGES'
+            //     discard = false
+            // })
 
             if (commit.type === 'feat') {
                 commit.type = settings[commit.type].title
@@ -176,7 +186,7 @@ function getWriterOpts() {
             } else if (commit.type === 'chore' && settings[commit.type].enable) {
                 commit.type = settings[commit.type].title
             } else if (discard) {
-                return
+                // return
             } else {
                 return
             }

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict';
 const Q = require(`q`);
 const conventionalChangelog = require(`./conventional-changelog`);
