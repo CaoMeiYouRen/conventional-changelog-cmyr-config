@@ -26,7 +26,6 @@ module.exports = {
             "@semantic-release/git",
             {
                 "assets": [
-                    "src",
                     "CHANGELOG.md",
                     "package.json"
                 ]
