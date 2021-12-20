@@ -147,7 +147,10 @@ module.exports = Q.all([
 
     return writerOpts
 })
-
+// 必须选项 
+const requiredOption = ['feat', 'fix', 'perf', 'revert', 'refactor']
+// 可选选项
+const optionalOptions = ['docs', 'style', 'test', 'build', 'ci', 'chore']
 function getWriterOpts() {
     return {
         transform: (commit, context) => {
@@ -163,30 +166,17 @@ function getWriterOpts() {
                 discard = false
             })
 
-            if (commit.type === 'feat') {
+            if (commit.revert) {
                 commit.type = settings[commit.type].title
-            } else if (commit.type === 'fix') {
+            } else if (requiredOption.includes(commit.type)) { // 以上为必须，以下为可选
                 commit.type = settings[commit.type].title
-            } else if (commit.type === 'perf') {
-                commit.type = settings[commit.type].title
-            } else if (commit.type === 'revert' || commit.revert) {
-                commit.type = settings[commit.type].title
-            } else if (commit.type === 'refactor') {
-                commit.type = settings[commit.type].title // 以上为必须，以下为可选
-            } else if (commit.type === 'docs' && settings[commit.type].enable) {
-                commit.type = settings[commit.type].title
-            } else if (commit.type === 'style' && settings[commit.type].enable) {
-                commit.type = settings[commit.type].title
-            } else if (commit.type === 'test' && settings[commit.type].enable) {
-                commit.type = settings[commit.type].title
-            } else if (commit.type === 'build' && settings[commit.type].enable) {
-                commit.type = settings[commit.type].title
-            } else if (commit.type === 'ci' && settings[commit.type].enable) {
-                commit.type = settings[commit.type].title
-            } else if (commit.type === 'chore' && settings[commit.type].enable) {
-                commit.type = settings[commit.type].title
+            } else if (optionalOptions.includes(commit.type)) {
+                if (settings[commit.type].enable) {
+                    commit.type = settings[commit.type].title
+                } else {// disable 时直接 return
+                    return
+                }
             } else if (discard) {
-                return
             } else {
                 return
             }

@@ -14,19 +14,10 @@ jobs:
         with:
           node-version: "14"
           cache: "yarn"
-      - name: Cache multiple paths
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.npm
-            ~/cache
-            !~/cache/exclude
-            **/node_modules
-          key: npm-${{ runner.os }}-${{ hashFiles('package.json') }}
       - run: yarn
       # - run: npm run lint
       # - run: npm run build
       - env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run release
+        run: yarn run release
