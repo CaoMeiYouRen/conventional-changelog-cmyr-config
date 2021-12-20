@@ -1,6 +1,6 @@
 # conventional-changelog-cmyr-config
 
-# 1.0.0 (2021-12-20)
+# 1.3.0 (2021-12-20)
 
 
 ### ⏪ 回退

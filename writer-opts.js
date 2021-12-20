@@ -153,15 +153,15 @@ function getWriterOpts() {
         transform: (commit, context) => {
             let discard = true
             const issues = []
-
-            if (commit.notes.length > 0) {
-                note.title = 'BREAKING CHANGES'
-                discard = false
-            }
-            // commit.notes.forEach(note => {
+            debug('commit ：%s', commit)
+            // if (commit.notes.length > 0) {
             //     note.title = 'BREAKING CHANGES'
             //     discard = false
-            // })
+            // }
+            commit.notes.forEach(note => {
+                note.title = 'BREAKING CHANGES'
+                discard = false
+            })
 
             if (commit.type === 'feat') {
                 commit.type = settings[commit.type].title
@@ -186,7 +186,7 @@ function getWriterOpts() {
             } else if (commit.type === 'chore' && settings[commit.type].enable) {
                 commit.type = settings[commit.type].title
             } else if (discard) {
-                // return
+                return
             } else {
                 return
             }
