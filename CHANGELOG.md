@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+## [2.0.1](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.0...v2.0.1) (2021-12-20)
+
+
+### 🐛 Bug 修复
+
+* 修复 可选配置问题 ([cbc1941](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/cbc1941))
+
 # [2.0.0](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v1.0.1...v2.0.0) (2021-12-20)
 
 
