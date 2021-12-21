@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+## [2.0.2](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.1...v2.0.2) (2021-12-21)
+
+
+### 🐛 Bug 修复
+
+* 修复 禁用特定类型日志无效的 bug ([3b9f773](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/3b9f773))
+
 ## [2.0.1](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.0...v2.0.1) (2021-12-20)
 
 
