@@ -113,14 +113,13 @@ const defaultOptions = {
     authorEmail: false,
     settings: _settings
 }
-const { bugsUrl, authorName, authorEmail } = {
-    ...defaultOptions,
-    ...changelog,
-}
-const settings = {
-    ...defaultOptions.settings,
-    ...changelog.settings || {}
-}
+const options = Object.assign({}, defaultOptions, changelog)
+debug('options: %o', options)
+const { bugsUrl, authorName, authorEmail } = options
+
+changelog.settings = changelog.settings || {}
+const settings = Object.assign({}, defaultOptions.settings, changelog.settings)
+debug('settings: %o', settings)
 
 let gitUserInfo = ''
 if (authorName && authorEmail) {
@@ -158,7 +157,6 @@ function getWriterOpts() {
             const issues = []
             debug('commit ：%s', commit)
             // if (commit.notes.length > 0) {
-            //     note.title = 'BREAKING CHANGES'
             //     discard = false
             // }
             commit.notes.forEach(note => {
@@ -167,15 +165,18 @@ function getWriterOpts() {
             })
 
             if (commit.revert) {
-                commit.type = settings[commit.type].title
+                commit.type = settings['revert'].title
             } else if (requiredOption.includes(commit.type)) {
                 commit.type = settings[commit.type].title
             } else if (optionalOptions.includes(commit.type)) { // 以上为必须，以下为可选
-                if (settings[commit.type].enable) {
+                if (!settings[commit.type].enable) {
                     commit.type = settings[commit.type].title
+                    debug('该 commit 类型不生成日志：%s', commit.type)
+                    return
                 }
+                commit.type = settings[commit.type].title
             } else if (discard) {
-                return
+                // return
             } else {
                 return
             }

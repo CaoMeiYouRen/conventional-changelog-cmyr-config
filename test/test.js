@@ -1,7 +1,6 @@
 'use strict'
 var conventionalChangelogCore = require('conventional-changelog-core')
 var preset = require('../')
-var preset = require('../')
 var expect = require('chai').expect
 var mocha = require('mocha')
 var describe = mocha.describe
@@ -14,7 +13,7 @@ var betterThanBefore = require('better-than-before')()
 var preparing = betterThanBefore.preparing
 
 betterThanBefore.setups([
-  function() {
+  function () {
     shell.config.resetForTesting()
     shell.cd(__dirname)
     shell.rm('-rf', 'tmp')
@@ -43,16 +42,16 @@ betterThanBefore.setups([
     gitDummyCommit('revert(ngOptions): bad commit')
     gitDummyCommit('fix(*): oops')
   },
-  function() {
+  function () {
     gitDummyCommit(['feat(awesome): addresses the issue brought up in #133'])
   },
-  function() {
+  function () {
     gitDummyCommit(['feat(awesome): fix #88'])
   },
-  function() {
+  function () {
     gitDummyCommit(['feat(awesome): issue brought up by @bcoe! on Friday'])
   },
-  function() {
+  function () {
     gitDummyCommit([
       'build(npm): edit build script',
       'BREAKING CHANGE: The Change is huge.'
@@ -78,14 +77,14 @@ betterThanBefore.setups([
       'BREAKING CHANGE: The Change is huge.'
     ])
   },
-  function() {
+  function () {
     shell.exec('git tag v1.0.0')
     gitDummyCommit('feat: some more features')
   },
-  function() {
+  function () {
     gitDummyCommit(['feat(*): implementing #5 by @dlmr', ' closes #10'])
   },
-  function() {
+  function () {
     gitDummyCommit(['fix: use npm@5 (@username)'])
     gitDummyCommit([
       'build(deps): bump @dummy/package from 7.1.2 to 8.0.0',
@@ -94,18 +93,18 @@ betterThanBefore.setups([
   }
 ])
 
-describe('custom-config preset', function() {
-  it('should work if there is no semver tag', function(done) {
+describe('custom-config preset', function () {
+  it('should work if there is no semver tag', function (done) {
     preparing(1)
 
     conventionalChangelogCore({
       config: preset
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
-        through(function(chunk) {
+        through(function (chunk) {
           chunk = chunk.toString()
 
           expect(chunk).to.include('first build setup')
@@ -142,17 +141,17 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should replace #[0-9]+ with GitHub issue URL', function(done) {
+  it('should replace #[0-9]+ with GitHub issue URL', function (done) {
     preparing(2)
 
     conventionalChangelogCore({
       config: preset
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
-        through(function(chunk) {
+        through(function (chunk) {
           chunk = chunk.toString()
           expect(chunk).to.include(
             '[#133](https://github.com/ITxiaohao/conventional-changelog-custom-config/issues/133)'
@@ -162,17 +161,17 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should remove the issues that already appear in the subject', function(done) {
+  it('should remove the issues that already appear in the subject', function (done) {
     preparing(3)
 
     conventionalChangelogCore({
       config: preset
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
-        through(function(chunk) {
+        through(function (chunk) {
           chunk = chunk.toString()
           expect(chunk).to.include(
             '[#88](https://github.com/ITxiaohao/conventional-changelog-custom-config/issues/88)'
@@ -185,17 +184,17 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should replace @username with GitHub user URL', function(done) {
+  it('should replace @username with GitHub user URL', function (done) {
     preparing(4)
 
     conventionalChangelogCore({
       config: preset
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
-        through(function(chunk) {
+        through(function (chunk) {
           chunk = chunk.toString()
           expect(chunk).to.include('[@bcoe](https://github.com/bcoe)')
           done()
@@ -203,17 +202,17 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should not discard commit if there is BREAKING CHANGE', function(done) {
+  it('should not discard commit if there is BREAKING CHANGE', function (done) {
     preparing(5)
 
     conventionalChangelogCore({
       config: preset
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
-        through(function(chunk) {
+        through(function (chunk) {
           chunk = chunk.toString()
 
           expect(chunk).to.include('Continuous Integration')
@@ -228,7 +227,7 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should work if there is a semver tag', function(done) {
+  it('should work if there is a semver tag', function (done) {
     preparing(6)
     var i = 0
 
@@ -236,12 +235,12 @@ describe('custom-config preset', function() {
       config: preset,
       outputUnreleased: true
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
         through(
-          function(chunk, enc, cb) {
+          function (chunk, enc, cb) {
             chunk = chunk.toString()
 
             expect(chunk).to.include('some more features')
@@ -250,7 +249,7 @@ describe('custom-config preset', function() {
             i++
             cb()
           },
-          function() {
+          function () {
             expect(i).to.equal(1)
             done()
           }
@@ -258,7 +257,7 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should work with unknown host', function(done) {
+  it('should work with unknown host', function (done) {
     preparing(6)
     var i = 0
 
@@ -268,12 +267,12 @@ describe('custom-config preset', function() {
         path: path.join(__dirname, 'fixtures/_unknown-host.json')
       }
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
         through(
-          function(chunk, enc, cb) {
+          function (chunk, enc, cb) {
             chunk = chunk.toString()
 
             expect(chunk).to.include('(http://unknown/compare')
@@ -282,7 +281,7 @@ describe('custom-config preset', function() {
             i++
             cb()
           },
-          function() {
+          function () {
             expect(i).to.equal(1)
             done()
           }
@@ -290,7 +289,7 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should work specifying where to find a package.json using conventional-changelog-core', function(done) {
+  it('should work specifying where to find a package.json using conventional-changelog-core', function (done) {
     preparing(7)
     var i = 0
 
@@ -300,12 +299,12 @@ describe('custom-config preset', function() {
         path: path.join(__dirname, 'fixtures/_known-host.json')
       }
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
         through(
-          function(chunk, enc, cb) {
+          function (chunk, enc, cb) {
             chunk = chunk.toString()
 
             expect(chunk).to.include(
@@ -321,7 +320,7 @@ describe('custom-config preset', function() {
             i++
             cb()
           },
-          function() {
+          function () {
             expect(i).to.equal(1)
             done()
           }
@@ -329,19 +328,19 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should fallback to the closest package.json when not providing a location for a package.json', function(done) {
+  it('should fallback to the closest package.json when not providing a location for a package.json', function (done) {
     preparing(7)
     var i = 0
 
     conventionalChangelogCore({
       config: preset
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
         through(
-          function(chunk, enc, cb) {
+          function (chunk, enc, cb) {
             chunk = chunk.toString()
 
             expect(chunk).to.include(
@@ -357,7 +356,7 @@ describe('custom-config preset', function() {
             i++
             cb()
           },
-          function() {
+          function () {
             expect(i).to.equal(1)
             done()
           }
@@ -365,7 +364,7 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should support non public GitHub repository locations', function(done) {
+  it('should support non public GitHub repository locations', function (done) {
     preparing(7)
 
     conventionalChangelogCore({
@@ -374,11 +373,11 @@ describe('custom-config preset', function() {
         path: path.join(__dirname, 'fixtures/_ghe-host.json')
       }
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
-        through(function(chunk) {
+        through(function (chunk) {
           chunk = chunk.toString()
 
           expect(chunk).to.include('(https://github.internal.example.com/dlmr')
@@ -400,17 +399,17 @@ describe('custom-config preset', function() {
       )
   })
 
-  it('should only replace with link to user if it is an username', function(done) {
+  it('should only replace with link to user if it is an username', function (done) {
     preparing(8)
 
     conventionalChangelogCore({
       config: preset
     })
-      .on('error', function(err) {
+      .on('error', function (err) {
         done(err)
       })
       .pipe(
-        through(function(chunk) {
+        through(function (chunk) {
           chunk = chunk.toString()
 
           expect(chunk).to.not.include('(https://github.com/5')
