@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-cmyr-config",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "This preset extends the angular preset",
   "main": "index.js",
   "engines": {

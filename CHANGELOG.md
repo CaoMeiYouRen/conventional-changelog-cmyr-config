@@ -1,5 +1,13 @@
 # conventional-changelog-cmyr-config
 
+## [2.0.3](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.2...v2.0.3) (2021-12-23)
+
+
+### 🐛 Bug 修复
+
+* 修复 gitUserInfo is not defined；新增 eslint；优化代码格式 ([ec61d5f](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/ec61d5f))
+* 添加 BREAKING CHANGES 图标💥；优化配置的默认值合并方式 ([3d5245e](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/3d5245e))
+
 ## [2.0.2](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.1...v2.0.2) (2021-12-21)
 
 
