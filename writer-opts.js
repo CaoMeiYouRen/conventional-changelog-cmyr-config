@@ -5,6 +5,7 @@ const readFile = Q.denodeify(require('fs').readFile)
 const resolve = require('path').resolve
 const path = require('path')
 const debug = require('debug')('conventional-changelog:cmyr-config"')
+const _ = require('lodash')
 // 自定义配置
 let pkgJson = {}
 try {
@@ -48,7 +49,7 @@ const en = {
         enable: false
     },
     build: {
-        title: '👷‍ Build System',
+        title: '👷 Build System',
         enable: false
     },
     ci: {
@@ -94,7 +95,7 @@ const zh = {
         enable: false
     },
     build: {
-        title: '👷‍ 构建',
+        title: '👷 构建',
         enable: false
     },
     ci: {
@@ -118,10 +119,26 @@ debug('options: %o', options)
 const { bugsUrl, authorName, authorEmail } = options
 
 changelog.settings = changelog.settings || {}
-const settings = Object.assign({}, defaultOptions.settings, changelog.settings)
-debug('settings: %o', settings)
 
-let gitUserInfo = ''
+const settings = _.fromPairs(_.toPairs(_settings).map(([key, value]) => {
+    if (!changelog.settings[key]) {
+        return [key, value]
+    }
+    const newValue = { title: '', enable: false }
+    if (typeof changelog.settings[key].title === 'string') {
+        newValue.title = changelog.settings[key].title
+    } else {
+        newValue.title = value.title
+    }
+
+    if (typeof changelog.settings[key].enable === 'boolean') {
+        newValue.enable = changelog.settings[key].enable
+    } else {
+        newValue.enable = value.enable
+    }
+    return [key, newValue]
+}))
+
 if (authorName && authorEmail) {
     gitUserInfo = 'by: **{{authorName}}** ({{authorEmail}})'
 } else if (authorName) {
@@ -160,7 +177,7 @@ function getWriterOpts() {
             //     discard = false
             // }
             commit.notes.forEach(note => {
-                note.title = 'BREAKING CHANGES'
+                note.title = '💥 BREAKING CHANGES'
                 discard = false
             })
 
