@@ -15,7 +15,7 @@ jobs:
           node-version: "14"
           # cache: "yarn"
       - run: yarn
-      # - run: npm run lint
+      - run: npm run lint
       # - run: npm run build
       - env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

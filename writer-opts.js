@@ -18,101 +18,101 @@ const { changelog = {} } = pkgJson
 const en = {
     feat: {
         title: '✨ Features',
-        enable: true
+        enable: true,
     },
     fix: {
         title: '🐛 Bug Fixes',
-        enable: true
+        enable: true,
     },
     perf: {
         title: '⚡ Performance Improvements',
-        enable: true
+        enable: true,
     },
     revert: {
         title: '⏪ Reverts',
-        enable: true
+        enable: true,
     },
     refactor: {
         title: '♻ Code Refactoring',
-        enable: true
+        enable: true,
     },
     docs: {
         title: '📝 Documentation',
-        enable: false
+        enable: false,
     },
     style: {
         title: '💄 Styles',
-        enable: false
+        enable: false,
     },
     test: {
         title: '✅ Tests',
-        enable: false
+        enable: false,
     },
     build: {
         title: '👷 Build System',
-        enable: false
+        enable: false,
     },
     ci: {
         title: '🔧 Continuous Integration',
-        enable: false
+        enable: false,
     },
     chore: {
         title: '🎫 Chores',
-        enable: false
-    }
+        enable: false,
+    },
 }
 const zh = {
     feat: {
         title: '✨ 新功能',
-        enable: true
+        enable: true,
     },
     fix: {
         title: '🐛 Bug 修复',
-        enable: true
+        enable: true,
     },
     perf: {
         title: '⚡ 性能优化',
-        enable: true
+        enable: true,
     },
     revert: {
         title: '⏪ 回退',
-        enable: true
+        enable: true,
     },
     refactor: {
         title: '♻ 代码重构',
-        enable: true
+        enable: true,
     },
     docs: {
         title: '📝 文档',
-        enable: false
+        enable: false,
     },
     style: {
         title: '💄 风格',
-        enable: false
+        enable: false,
     },
     test: {
         title: '✅ 测试',
-        enable: false
+        enable: false,
     },
     build: {
         title: '👷 构建',
-        enable: false
+        enable: false,
     },
     ci: {
         title: '🔧 CI 配置',
-        enable: false
+        enable: false,
     },
     chore: {
         title: '🎫 其他更新',
-        enable: false
-    }
+        enable: false,
+    },
 }
 const _settings = /(zh|cn|Han)/i.test(changelog && changelog.language) ? zh : en
 const defaultOptions = {
     bugsUrl: false,
     authorName: false,
     authorEmail: false,
-    settings: _settings
+    settings: _settings,
 }
 const options = Object.assign({}, defaultOptions, changelog)
 debug('options: %o', options)
@@ -139,6 +139,7 @@ const settings = _.fromPairs(_.toPairs(_settings).map(([key, value]) => {
     return [key, newValue]
 }))
 
+let gitUserInfo = ''
 if (authorName && authorEmail) {
     gitUserInfo = 'by: **{{authorName}}** ({{authorEmail}})'
 } else if (authorName) {
@@ -151,7 +152,7 @@ module.exports = Q.all([
     readFile(resolve(__dirname, './templates/template.hbs'), 'utf-8'),
     readFile(resolve(__dirname, './templates/header.hbs'), 'utf-8'),
     readFile(resolve(__dirname, './templates/commit.hbs'), 'utf-8'),
-    readFile(resolve(__dirname, './templates/footer.hbs'), 'utf-8')
+    readFile(resolve(__dirname, './templates/footer.hbs'), 'utf-8'),
 ]).spread((template, header, commit, footer) => {
     const writerOpts = getWriterOpts()
 
@@ -176,7 +177,7 @@ function getWriterOpts() {
             // if (commit.notes.length > 0) {
             //     discard = false
             // }
-            commit.notes.forEach(note => {
+            commit.notes.forEach((note) => {
                 note.title = '💥 BREAKING CHANGES'
                 discard = false
             })
@@ -230,13 +231,13 @@ function getWriterOpts() {
                             }
 
                             return `[@${username}](${context.host}/${username})`
-                        }
+                        },
                     )
                 }
             }
 
             // remove references that already appear in the subject
-            commit.references = commit.references.filter(reference => {
+            commit.references = commit.references.filter((reference) => {
                 if (issues.indexOf(reference.issue) === -1) {
                     return true
                 }
@@ -245,12 +246,10 @@ function getWriterOpts() {
             })
 
             if (bugsUrl) {
-                commit.references = commit.references.map(ref => {
-                    return {
-                        ...ref,
-                        bugsUrl
-                    }
-                })
+                commit.references = commit.references.map((ref) => ({
+                    ...ref,
+                    bugsUrl,
+                }))
             }
 
             return commit
@@ -259,6 +258,6 @@ function getWriterOpts() {
         commitGroupsSort: 'title',
         commitsSort: ['scope', 'subject'],
         noteGroupsSort: 'title',
-        notesSort: compareFunc
+        notesSort: compareFunc,
     }
 }
