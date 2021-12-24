@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+## [2.0.4](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.3...v2.0.4) (2021-12-24)
+
+
+### 🐛 Bug 修复
+
+* 回退 discard ([c09eafd](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/c09eafd))
+
 ## [2.0.3](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.2...v2.0.3) (2021-12-23)
 
 
