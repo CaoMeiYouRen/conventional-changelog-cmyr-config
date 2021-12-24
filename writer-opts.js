@@ -194,7 +194,7 @@ function getWriterOpts() {
                 }
                 commit.type = settings[commit.type].title
             } else if (discard) {
-                // return
+                return
             } else {
                 return
             }
