@@ -15,7 +15,7 @@
 </p>
 
 
-> 本项目fork自[conventional-changelog-custom-config](https://github.com/ITxiaohao/conventional-changelog-custom-config)，在原有基础上添加了更多自定义部分
+> 本项目 fork 自[conventional-changelog-custom-config](https://github.com/ITxiaohao/conventional-changelog-custom-config)，在原有基础上添加了更多自定义部分
 
 ### 🏠 [主页](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config#readme)
 
@@ -172,7 +172,7 @@ npm run changelog
 
 ## 🤝贡献
 
-欢迎Contributions, issues and feature!<br />如有问题请查看 [issues page](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/issues). 您还可以查看[contributing guide](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/blob/master/CONTRIBUTING.md).
+欢迎 Contributions, issues and feature!<br />如有问题请查看 [issues page](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/issues). 您还可以查看[contributing guide](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/blob/master/CONTRIBUTING.md).
 
 ## 支持
 
