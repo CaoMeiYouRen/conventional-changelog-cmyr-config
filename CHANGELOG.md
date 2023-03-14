@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+# [2.1.0](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.4...v2.1.0) (2023-03-14)
+
+
+### ✨ 新功能
+
+* 移除 lodash 依赖；优化 贡献者名单 ([2cbe102](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/2cbe102))
+
 ## [2.0.4](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.3...v2.0.4) (2021-12-24)
 
 
