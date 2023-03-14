@@ -5,7 +5,6 @@ const readFile = Q.denodeify(require('fs').readFile)
 const resolve = require('path').resolve
 const path = require('path')
 const debug = require('debug')('conventional-changelog:cmyr-config"')
-const _ = require('lodash')
 // 自定义配置
 let pkgJson = {}
 try {
@@ -120,7 +119,7 @@ const { bugsUrl, authorName, authorEmail } = options
 
 changelog.settings = changelog.settings || {}
 
-const settings = _.fromPairs(_.toPairs(_settings).map(([key, value]) => {
+const settings = Object.fromEntries(Object.entries(_settings).map(([key, value]) => {
     if (!changelog.settings[key]) {
         return [key, value]
     }

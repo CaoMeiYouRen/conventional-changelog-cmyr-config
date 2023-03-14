@@ -32,6 +32,10 @@
     "emoji"
   ],
   "author": "CaoMeiYouRen <caomeiyouren@gmail.com>",
+  "contributors": [
+    "CaoMeiYouRen <caomeiyouren@gmail.com>",
+    "Zeng Shunhao <shunhaozeng@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/issues"
@@ -69,7 +73,5 @@
   "changelog": {
     "language": "zh"
   },
-  "dependencies": {
-    "lodash": "^4.17.21"
-  }
+  "dependencies": {}
 }
