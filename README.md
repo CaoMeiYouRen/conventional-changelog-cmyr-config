@@ -122,19 +122,19 @@ Type: `string` Default: `false`
 
 **emojis types 参考 [gitmoji](https://gitmoji.carloscuesta.me/)**
 
-| Commit Type | Title                    | Description                                                  | Emojis |
-| ----------- | ------------------------ | ------------------------------------------------------------ | ------ |
-| `feat`      | Features                 | A new feature                                                | ✨      |
-| `fix`       | Bug Fixes                | A bug Fix                                                    | 🐛      |
-| `docs`      | Documentation            | Documentation only changes                                   | 📝      |
-| `style`     | Styles                   | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc) | 💄      |
-| `refactor`  | Code Refactoring         | A code change that neither fixes a bug nor adds a feature    | ♻️      |
-| `perf`      | Performance Improvements | A code change that improves performance                      | ⚡️      |
-| `test`      | Tests                    | Adding missing tests or correcting existing tests            | ✅      |
-| `build`     | Build                    | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm) | 👷      |
-| `ci`        | Continuous Integrations  | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) | 🔧      |
-| `chore`     | Chores                   | Other changes that don't modify src or test files            | 🎫      |
-| `revert`    | Reverts                  | Reverts a previous commit                                    | ⏪      |
+| Commit Type | Title                    | Description                                                                                                 | Emojis |
+|-------------|--------------------------|-------------------------------------------------------------------------------------------------------------|--------|
+| `feat`      | Features                 | A new feature                                                                                               | ✨      |
+| `fix`       | Bug Fixes                | A bug Fix                                                                                                   | 🐛     |
+| `docs`      | Documentation            | Documentation only changes                                                                                  | 📝     |
+| `style`     | Styles                   | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)      | 💄     |
+| `refactor`  | Code Refactoring         | A code change that neither fixes a bug nor adds a feature                                                   | ♻️      |
+| `perf`      | Performance Improvements | A code change that improves performance                                                                     | ⚡️      |
+| `test`      | Tests                    | Adding missing tests or correcting existing tests                                                           | ✅      |
+| `build`     | Build                    | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         | 👷     |
+| `ci`        | Continuous Integrations  | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) | 🔧     |
+| `chore`     | Chores                   | Other changes that don't modify src or test files                                                           | 🎫     |
+| `revert`    | Reverts                  | Reverts a previous commit                                                                                   | ⏪      |
 
 **authorName**
 
@@ -165,7 +165,7 @@ npm run changelog
 ## 作者
 
 
-👤 **CaoMeiYouRen <caomeiyouren@gmail.com>**
+👤 **CaoMeiYouRen**
 
 * Website: https://blog.cmyr.ltd
 * GitHub: [@CaoMeiYouRen](https://github.com/CaoMeiYouRen)
@@ -180,7 +180,7 @@ npm run changelog
 
 ## 📝 License
 
-Copyright © 2020 [CaoMeiYouRen <caomeiyouren@gmail.com>](https://github.com/CaoMeiYouRen).<br />
+Copyright © 2020 [CaoMeiYouRen](https://github.com/CaoMeiYouRen).<br />
 This project is [MIT](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/blob/master/LICENSE) licensed.
 
 ***
