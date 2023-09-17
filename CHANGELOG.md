@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+## [2.1.1](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.1.0...v2.1.1) (2023-09-17)
+
+
+### 🐛 Bug 修复
+
+* 修复 项目中存在幽灵依赖的 bug ([81d1a80](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/81d1a80))
+
 # [2.1.0](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.0.4...v2.1.0) (2023-03-14)
 
 
