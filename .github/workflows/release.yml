@@ -8,16 +8,32 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
         with:
-          node-version: "16"
-          cache: "yarn"
-      - run: yarn
-      - run: yarn run lint
-      # - run: npm run build
+          persist-credentials: false
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "latest"
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+      - name: Cache Dependency
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ~/.yarn
+            ~/.cache/pnpm
+            ~/cache
+            !~/cache/exclude
+            **/node_modules
+          key: pnpm-${{ runner.os }}-${{ hashFiles('package.json') }}
+          restore-keys: pnpm-${{ runner.os }}
+      - run: pnpm i --fix-lockfile
+      - run: pnpm run lint
       - env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn run release
+        run: pnpm run release
