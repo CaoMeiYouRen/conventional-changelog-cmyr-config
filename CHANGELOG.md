@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+## [2.1.2](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.1.1...v2.1.2) (2024-04-17)
+
+
+### 🐛 Bug 修复
+
+* 修复 compare-func 版本问题 ([fa5b1e8](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/fa5b1e8))
+
 ## [2.1.1](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.1.0...v2.1.1) (2023-09-17)
 
 
