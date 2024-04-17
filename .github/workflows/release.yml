@@ -12,10 +12,10 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
-          # cache: "yarn"
+          node-version: "16"
+          cache: "yarn"
       - run: yarn
-      - run: npm run lint
+      - run: yarn run lint
       # - run: npm run build
       - env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
