@@ -3,6 +3,9 @@
   <a href="https://www.npmjs.com/package/conventional-changelog-cmyr-config" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/conventional-changelog-cmyr-config.svg">
   </a>
+  <a href="https://www.npmjs.com/package/conventional-changelog-cmyr-config" target="_blank">
+    <img alt="npm downloads" src="https://img.shields.io/npm/dt/conventional-changelog-cmyr-config?label=npm%20downloads&color=yellow">
+  </a>
   <a href="https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
