@@ -163,7 +163,7 @@ module.exports = Q.all([
 
     return writerOpts
 })
-// 必须选项 
+// 必须选项
 const requiredOption = ['feat', 'fix', 'perf', 'revert', 'refactor']
 // 可选选项
 const optionalOptions = ['docs', 'style', 'test', 'build', 'ci', 'chore']
