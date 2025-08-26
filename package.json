@@ -61,7 +61,7 @@
     "conventional-changelog-core": "^3.2.2",
     "coveralls": "^3.0.4",
     "cross-env": "^7.0.3",
-    "cz-conventional-changelog-cmyr": "2.0.0-beta.1",
+    "cz-conventional-changelog-cmyr": "2.0.0-beta.2",
     "eslint": "^9.34.0",
     "eslint-config-cmyr": "2.0.0-beta.15",
     "git-dummy-commit": "^1.3.0",
