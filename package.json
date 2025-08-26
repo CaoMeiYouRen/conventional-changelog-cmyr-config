@@ -3,19 +3,32 @@
   "version": "2.1.2",
   "description": "This preset extends the angular preset",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.mts"
+    }
+  },
   "engines": {
     "node": ">=18"
   },
   "scripts": {
     "commit": "git-cz",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 -n ./index.js",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 -n ./dist/index.mjs",
     "release": "semantic-release",
     "test-windows": "mocha --timeout 30000",
     "deploy-beta": "npm publish --tag beta",
     "deploy": "npm publish",
     "lint": "cross-env NODE_ENV=production eslint *.js --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build": "cross-env NODE_ENV=production tsdown"
   },
   "repository": {
     "type": "git",
@@ -76,6 +89,7 @@
     "semantic-release": "^18.0.1",
     "shelljs": "^0.8.3",
     "through2": "^3.0.1",
+    "tsdown": "^0.14.2",
     "typescript": "^5.9.2"
   },
   "changelog": {
