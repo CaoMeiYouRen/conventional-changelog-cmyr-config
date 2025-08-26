@@ -93,7 +93,9 @@
     "typescript": "^5.9.2"
   },
   "changelog": {
-    "language": "zh"
+    "language": "zh",
+    "authorName": false,
+    "authorEmail": false
   },
   "dependencies": {
     "compare-func": "^2.0.0",
