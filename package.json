@@ -26,7 +26,7 @@
     "test-windows": "mocha --timeout 30000",
     "deploy-beta": "npm publish --tag beta",
     "deploy": "npm publish",
-    "lint": "cross-env NODE_ENV=production eslint *.js --fix",
+    "lint": "cross-env NODE_ENV=production eslint . --fix",
     "prepare": "husky install",
     "build": "cross-env NODE_ENV=production tsdown"
   },
