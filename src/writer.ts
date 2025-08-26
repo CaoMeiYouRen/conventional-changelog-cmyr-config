@@ -227,39 +227,45 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
             const issues: string[] = []
             log('commit：%s', commit)
 
+            // 创建新的 commit 对象来避免修改不可变对象
+            const newCommit = { ...commit }
+
             // 处理 BREAKING CHANGES
-            commit.notes.forEach((note) => {
-                note.title = '💥 BREAKING CHANGES'
+            newCommit.notes = commit.notes.map((note) => ({
+                ...note,
+                title: '💥 BREAKING CHANGES',
+            }))
+            if (newCommit.notes.length > 0) {
                 discard = false
-            })
+            }
 
             // 处理 commit 类型
-            if (commit.revert) {
-                commit.type = settings.revert.title
-            } else if (requiredOptions.includes(commit.type)) {
-                commit.type = settings[commit.type].title
-            } else if (optionalOptions.includes(commit.type)) {
+            if (newCommit.revert) {
+                newCommit.type = settings.revert.title
+            } else if (requiredOptions.includes(newCommit.type)) {
+                newCommit.type = settings[newCommit.type].title
+            } else if (optionalOptions.includes(newCommit.type)) {
                 // 检查是否启用了该类型
-                if (!settings[commit.type].enable) {
-                    log('该 commit 类型不生成日志：%s', settings[commit.type].title)
+                if (!settings[newCommit.type].enable) {
+                    log('该 commit 类型不生成日志：%s', settings[newCommit.type].title)
                     return undefined
                 }
-                commit.type = settings[commit.type].title
+                newCommit.type = settings[newCommit.type].title
             } else {
                 return undefined
             }
 
-            log('commit.type：%s', commit.type)
+            log('commit.type：%s', newCommit.type)
 
-            if (commit.scope === '*') {
-                commit.scope = ''
+            if (newCommit.scope === '*') {
+                newCommit.scope = ''
             }
 
-            if (typeof commit.hash === 'string') {
-                commit.hash = commit.hash.substring(0, COMMIT_HASH_LENGTH)
+            if (typeof newCommit.hash === 'string') {
+                newCommit.hash = newCommit.hash.substring(0, COMMIT_HASH_LENGTH)
             }
 
-            if (typeof commit.subject === 'string') {
+            if (typeof newCommit.subject === 'string') {
                 let url = context.repository
                     ? `${context.host}/${context.owner}/${context.repository}`
                     : context.repoUrl
@@ -267,7 +273,7 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
                 if (url) {
                     url = `${url}/issues/`
                     // Issue URLs.
-                    commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
+                    newCommit.subject = newCommit.subject.replace(/#([0-9]+)/g, (_, issue) => {
                         issues.push(issue)
                         return `[#${issue}](${url}${issue})`
                     })
@@ -275,7 +281,7 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
 
                 if (context.host) {
                     // User URLs.
-                    commit.subject = commit.subject.replace(
+                    newCommit.subject = newCommit.subject.replace(
                         /\B@([a-z0-9](?:-?[a-z0-9/]){0,38})/g,
                         (_, username) => {
                             if (username.includes('/')) {
@@ -288,16 +294,16 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
             }
 
             // remove references that already appear in the subject
-            commit.references = commit.references.filter((reference) => issues.indexOf(reference.issue) === -1)
+            newCommit.references = commit.references.filter((reference) => issues.indexOf(reference.issue) === -1)
 
             if (config.bugsUrl) {
-                commit.references = commit.references.map((ref) => ({
+                newCommit.references = newCommit.references.map((ref) => ({
                     ...ref,
                     bugsUrl: config.bugsUrl,
                 }))
             }
 
-            return commit
+            return newCommit
         },
         groupBy: 'type',
         commitGroupsSort: 'title',
