@@ -13,6 +13,7 @@ export default defineConfig([
             '@typescript-eslint/explicit-module-boundary-types': [1, {
                 allowArgumentsExplicitlyTypedAsAny: true,
             }],
+            '@stylistic/no-trailing-spaces': 0,
         },
     },
 ])

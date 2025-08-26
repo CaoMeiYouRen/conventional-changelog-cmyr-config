@@ -13,3 +13,6 @@ export default async function createPreset(): Promise<{
         whatBump,
     }
 }
+
+export { createParserOpts, createWriterOpts, whatBump }
+export type { ParserOptions, WriterOptions }
