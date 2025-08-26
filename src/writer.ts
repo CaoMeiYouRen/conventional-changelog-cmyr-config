@@ -43,7 +43,7 @@ const enDefaultSettings: TypeSettings = {
         enable: true,
     },
     refactor: {
-        title: '♻ Code Refactoring',
+        title: '📦 Code Refactoring',
         enable: true,
     },
     docs: {
@@ -91,7 +91,7 @@ const zhDefaultSettings: TypeSettings = {
         enable: true,
     },
     refactor: {
-        title: '♻ 代码重构',
+        title: '📦 代码重构',
         enable: true,
     },
     docs: {
@@ -245,8 +245,6 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
                     return undefined
                 }
                 commit.type = settings[commit.type].title
-            } else if (discard) {
-                return undefined
             } else {
                 return undefined
             }
