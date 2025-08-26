@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-cmyr-config",
-  "version": "2.1.2",
+  "version": "3.0.0-beta.1",
   "description": "This preset extends the angular preset",
   "type": "module",
   "main": "dist/index.cjs",
