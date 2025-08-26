@@ -1,4 +1,12 @@
-export function createParserOpts() {
+export interface ParserOptions {
+    headerPattern: RegExp
+    headerCorrespondence: string[]
+    noteKeywords: string[]
+    revertPattern: RegExp
+    revertCorrespondence: string[]
+}
+
+export function createParserOpts(): ParserOptions {
     return {
         headerPattern: /^(\w*)(?:\((.*)\))?: (.*)$/,
         headerCorrespondence: [

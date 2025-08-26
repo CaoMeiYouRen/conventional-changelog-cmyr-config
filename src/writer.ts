@@ -6,7 +6,7 @@ import compareFunc from 'compare-func'
 const dirname = fileURLToPath(new URL('.', import.meta.url))
 const COMMIT_HASH_LENGTH = 7
 
-interface WriterOptions {
+export interface WriterOptions {
     mainTemplate?: string
     headerPartial?: string
     commitPartial?: string
@@ -19,7 +19,7 @@ interface WriterOptions {
     notesSort: (prop: any) => (a: any, b: any) => number
 }
 
-export async function createWriterOpts() {
+export async function createWriterOpts(): Promise<WriterOptions> {
     const [
         template,
         header,

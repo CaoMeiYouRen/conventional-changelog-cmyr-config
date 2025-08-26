@@ -10,6 +10,9 @@ export default defineConfig([
             'no-shadow': 0,
             '@typescript-eslint/no-shadow': 0,
             '@typescript-eslint/no-require-imports': 0,
+            '@typescript-eslint/explicit-module-boundary-types': [1, {
+                allowArgumentsExplicitlyTypedAsAny: true,
+            }],
         },
     },
 ])

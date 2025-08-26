@@ -1,4 +1,7 @@
-export function whatBump(commits) {
+export function whatBump(commits: any[]): {
+    level: number
+    reason: string
+} {
     let level = 2
     let breakings = 0
     let features = 0
