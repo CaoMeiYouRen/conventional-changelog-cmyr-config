@@ -99,7 +99,6 @@
   },
   "dependencies": {
     "compare-func": "^2.0.0",
-    "debug": "^4.1.1",
-    "q": "^1.5.1"
+    "debug": "^4.1.1"
   }
 }
