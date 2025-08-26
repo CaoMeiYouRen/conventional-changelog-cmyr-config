@@ -2,9 +2,10 @@
   "name": "conventional-changelog-cmyr-config",
   "version": "2.1.2",
   "description": "This preset extends the angular preset",
+  "type": "module",
   "main": "index.js",
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
   "scripts": {
     "commit": "git-cz",
