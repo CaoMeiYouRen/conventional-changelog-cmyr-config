@@ -7,8 +7,6 @@ updates:
       interval: monthly
       time: "04:00"
       timezone: Asia/Shanghai
-    ignore:
-      - dependency-name: semantic-release
   - package-ecosystem: github-actions
     directory: /
     open-pull-requests-limit: 20
