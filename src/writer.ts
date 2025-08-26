@@ -19,8 +19,6 @@ interface TypeSettings {
 interface ChangelogConfig {
     language?: string
     bugsUrl?: string | false
-    authorName?: string | false
-    authorEmail?: string | false
     settings?: Partial<TypeSettings>
 }
 
@@ -128,7 +126,6 @@ const optionalOptions = ['docs', 'style', 'test', 'build', 'ci', 'chore']
 async function loadConfig(): Promise<{
     config: ChangelogConfig
     settings: TypeSettings
-    gitUserInfo: string
 }> {
     let pkgJson: { changelog?: ChangelogConfig } = {}
 
@@ -146,8 +143,6 @@ async function loadConfig(): Promise<{
 
     const defaultOptions: ChangelogConfig = {
         bugsUrl: false,
-        authorName: false,
-        authorEmail: false,
         settings: baseSettings,
     }
 
@@ -168,17 +163,7 @@ async function loadConfig(): Promise<{
         }
     }
 
-    // 构建gitUserInfo
-    let gitUserInfo = ''
-    if (config.authorName && config.authorEmail) {
-        gitUserInfo = 'by: **{{authorName}}** ({{authorEmail}})'
-    } else if (config.authorName) {
-        gitUserInfo = 'by: **{{authorName}}**'
-    } else if (config.authorEmail) {
-        gitUserInfo = 'by: ({{authorEmail}})'
-    }
-
-    return { config, settings, gitUserInfo }
+    return { config, settings }
 }
 
 export interface WriterOptions {
@@ -195,7 +180,7 @@ export interface WriterOptions {
 }
 
 export async function createWriterOpts(): Promise<WriterOptions> {
-    const { config, settings, gitUserInfo } = await loadConfig()
+    const { config, settings } = await loadConfig()
 
     const [
         template,
@@ -213,8 +198,7 @@ export async function createWriterOpts(): Promise<WriterOptions> {
 
     writerOpts.mainTemplate = template
     writerOpts.headerPartial = header
-    // 替换 commit.hbs 模板中的 gitUserInfo
-    writerOpts.commitPartial = commit.replace(/\{\{gitUserInfo\}\}/g, gitUserInfo)
+    writerOpts.commitPartial = commit
     writerOpts.footerPartial = footer
 
     return writerOpts

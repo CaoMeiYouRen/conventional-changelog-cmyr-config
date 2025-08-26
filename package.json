@@ -21,7 +21,7 @@
   },
   "scripts": {
     "commit": "git-cz",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 -n ./dist/index.mjs",
+    "changelog": "cross-env DEBUG=conventional-changelog* conventional-changelog -i CHANGELOG.md -s -r 0 -n ./dist/index.mjs",
     "release": "semantic-release",
     "test-windows": "mocha --timeout 30000",
     "deploy-beta": "npm publish --tag beta",
@@ -93,9 +93,7 @@
     "typescript": "^5.9.2"
   },
   "changelog": {
-    "language": "zh",
-    "authorName": false,
-    "authorEmail": false
+    "language": "zh"
   },
   "dependencies": {
     "compare-func": "^2.0.0",
