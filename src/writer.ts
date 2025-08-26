@@ -6,6 +6,19 @@ import compareFunc from 'compare-func'
 const dirname = fileURLToPath(new URL('.', import.meta.url))
 const COMMIT_HASH_LENGTH = 7
 
+interface WriterOptions {
+    mainTemplate?: string
+    headerPartial?: string
+    commitPartial?: string
+    footerPartial?: string
+    transform: (commit: any, context: any) => any
+    groupBy: string
+    commitGroupsSort: string
+    commitsSort: string[]
+    noteGroupsSort: string
+    notesSort: (prop: any) => (a: any, b: any) => number
+}
+
 export async function createWriterOpts() {
     const [
         template,
@@ -28,7 +41,7 @@ export async function createWriterOpts() {
     return writerOpts
 }
 
-function getWriterOpts() {
+function getWriterOpts(): WriterOptions {
     return {
         transform: (commit, context) => {
             let discard = true
@@ -70,7 +83,7 @@ function getWriterOpts() {
             const shortHash = typeof commit.hash === 'string'
                 ? commit.hash.substring(0, COMMIT_HASH_LENGTH)
                 : commit.shortHash
-            const issues = []
+            const issues: string[] = []
             let { subject } = commit
 
             if (typeof subject === 'string') {
