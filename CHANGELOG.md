@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+# [3.0.0-beta.4](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.3...v3.0.0-beta.4) (2025-08-27)
+
+
+### 🐛 Bug 修复
+
+* 更新依赖项 @types/node 至 ^24.3.0，修改样式标题为 💎 ([b19780e](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/b19780e))
+
 # [3.0.0-beta.3](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.2...v3.0.0-beta.3) (2025-08-27)
 
 
