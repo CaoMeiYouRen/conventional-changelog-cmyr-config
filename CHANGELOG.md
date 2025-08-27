@@ -1,5 +1,13 @@
 # conventional-changelog-cmyr-config
 
+# [3.0.0-beta.5](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.4...v3.0.0-beta.5) (2025-08-27)
+
+
+### 🐛 Bug 修复
+
+* 修改插件发布配置以使用本地配置 ([0d35e37](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/0d35e37))
+* 更新 release.config.mjs 配置，启用 changelog 插件并移除扩展配置 ([03add6f](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/03add6f))
+
 # [3.0.0-beta.4](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.3...v3.0.0-beta.4) (2025-08-27)
 
 
