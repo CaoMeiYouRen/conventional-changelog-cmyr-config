@@ -65,6 +65,7 @@
   "homepage": "https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config#readme",
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
+    "@types/node": "^24.3.0",
     "better-than-before": "^1.0.0",
     "chai": "^4.2.0",
     "commitizen": "^4.3.1",

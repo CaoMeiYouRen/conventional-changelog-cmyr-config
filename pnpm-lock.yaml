@@ -18,6 +18,9 @@ importers:
       '@commitlint/cli':
         specifier: ^19.8.1
         version: 19.8.1(@types/node@24.3.0)(typescript@5.9.2)
+      '@types/node':
+        specifier: ^24.3.0
+        version: 24.3.0
       better-than-before:
         specifier: ^1.0.0
         version: 1.0.0

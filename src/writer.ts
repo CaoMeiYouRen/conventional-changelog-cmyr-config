@@ -49,7 +49,7 @@ const enDefaultSettings: TypeSettings = {
         enable: false,
     },
     style: {
-        title: '💄 Styles',
+        title: '💎 Styles',
         enable: false,
     },
     test: {
@@ -97,7 +97,7 @@ const zhDefaultSettings: TypeSettings = {
         enable: false,
     },
     style: {
-        title: '💄 风格',
+        title: '💎 风格',
         enable: false,
     },
     test: {
