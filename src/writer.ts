@@ -211,18 +211,6 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
             const issues: string[] = []
             log('commit：%s', commit)
 
-            // 确保 context.date 是一个有效的 Date 对象或字符串
-            if (context && context.date && typeof context.date === 'object' && context.date.constructor !== Date) {
-                try {
-                    // 如果 date 是一个代理对象或其他类型，尝试转换为字符串
-                    context.date = new Date(context.date).toISOString().split('T')[0]
-                } catch (error) {
-                    // 如果转换失败，使用当前日期
-                    context.date = new Date().toISOString().split('T')[0]
-                    log('date conversion failed, using current date: %s', context.date)
-                }
-            }
-
             // 创建新的 commit 对象来避免修改不可变对象
             const newCommit = { ...commit }
 
