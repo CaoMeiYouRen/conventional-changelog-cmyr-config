@@ -1,19 +1,35 @@
 {
   "name": "conventional-changelog-cmyr-config",
-  "version": "2.1.2",
-  "description": "This preset extends the angular preset",
-  "main": "index.js",
+  "version": "3.0.0-beta.5",
+  "description": "草梅友仁使用的更新日志规范",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.mts"
+    }
+  },
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
   "scripts": {
     "commit": "git-cz",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 -n ./index.js",
+    "changelog": "cross-env DEBUG=conventional-changelog* conventional-changelog -i CHANGELOG.md -s -r 0 -n ./dist/index.mjs",
     "release": "semantic-release",
     "test-windows": "mocha --timeout 30000",
     "deploy-beta": "npm publish --tag beta",
     "deploy": "npm publish",
-    "lint": "cross-env NODE_ENV=production eslint *.js --fix --ext .js"
+    "lint": "cross-env NODE_ENV=production eslint . --fix",
+    "prepare": "husky install",
+    "build": "cross-env NODE_ENV=production tsdown"
   },
   "repository": {
     "type": "git",
@@ -21,8 +37,14 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog"
+      "path": "./node_modules/cz-conventional-changelog-cmyr"
     }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "npm run lint",
+      "git add"
+    ]
   },
   "keywords": [
     "conventional-changelog",
@@ -42,37 +64,36 @@
   },
   "homepage": "https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config#readme",
   "devDependencies": {
-    "@commitlint/config-conventional": "^15.0.0",
-    "@semantic-release/changelog": "^6.0.1",
+    "@commitlint/cli": "^19.8.1",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/lodash": "^4.14.178",
+    "@types/node": "^24.3.0",
     "better-than-before": "^1.0.0",
     "chai": "^4.2.0",
-    "commitizen": "^3.1.1",
-    "commitlint": "^15.0.0",
-    "conventional-changelog-cli": "^2.0.21",
+    "commitizen": "^4.3.1",
+    "commitlint-config-cmyr": "1.0.0",
+    "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-core": "^3.2.2",
-    "coveralls": "^3.0.4",
     "cross-env": "^7.0.3",
-    "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^8.5.0",
-    "eslint-config-cmyr": "^1.1.15",
+    "cz-conventional-changelog-cmyr": "2.0.0",
+    "eslint": "^9.34.0",
+    "eslint-config-cmyr": "2.0.0-beta.15",
     "git-dummy-commit": "^1.3.0",
-    "github-url-from-git": "^1.5.0",
-    "istanbul": "^0.4.5",
-    "jscs": "^3.0.7",
-    "jshint": "^2.10.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
     "mocha": "*",
-    "semantic-release": "^18.0.1",
+    "semantic-release": "^24.2.7",
+    "semantic-release-cmyr-config": "1.0.0-beta.2",
     "shelljs": "^0.8.3",
-    "through2": "^3.0.1"
+    "through2": "^3.0.1",
+    "tsdown": "^0.14.2",
+    "typescript": "^5.9.2"
   },
   "changelog": {
     "language": "zh"
   },
   "dependencies": {
     "compare-func": "^2.0.0",
-    "q": "^1.5.1",
     "debug": "^4.1.1"
   }
 }

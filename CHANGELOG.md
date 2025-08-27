@@ -1,5 +1,66 @@
 # conventional-changelog-cmyr-config
 
+# [3.0.0-beta.5](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.4...v3.0.0-beta.5) (2025-08-27)
+
+
+### 🐛 Bug 修复
+
+* 修改插件发布配置以使用本地配置 ([0d35e37](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/0d35e37))
+* 更新 release.config.mjs 配置，启用 changelog 插件并移除扩展配置 ([03add6f](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/03add6f))
+
+# [3.0.0-beta.4](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.3...v3.0.0-beta.4) (2025-08-27)
+
+
+### 🐛 Bug 修复
+
+* 更新依赖项 @types/node 至 ^24.3.0，修改样式标题为 💎 ([b19780e](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/b19780e))
+
+# [3.0.0-beta.3](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.2...v3.0.0-beta.3) (2025-08-27)
+
+
+### ⏪ 回退
+
+* "fix: 确保 context.date 是有效的 Date 对象或字符串，添加日期转换逻辑" ([a355e94](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/a355e94))
+
+# [3.0.0-beta.2](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.1...v3.0.0-beta.2) (2025-08-27)
+
+
+### 🐛 Bug 修复
+
+* 确保 context.date 是有效的 Date 对象或字符串，添加日期转换逻辑 ([d40b991](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/d40b991))
+
+# [3.0.0-beta.1](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.1.2...v3.0.0-beta.1) (2025-08-26)
+
+
+### ✨ 新功能
+
+* 全面迁移自定义日志标题配置 ([28276bf](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/28276bf))
+* 升级到 esm 模块；最低 Node.js 版本提升到 18 ([a8f663e](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/a8f663e))
+* 更新 package.json 中的 Node.js 版本要求至 >=20.10 ([695d470](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/695d470))
+* 添加 TypeScript 支持，重构项目结构并更新构建配置 ([2e7788d](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/2e7788d))
+
+
+### 🐛 Bug 修复
+
+* 为 getWriterOpts 函数添加类型定义，增强类型安全性 ([55f59d3](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/55f59d3))
+* 在 package.json 中添加 templates 目录到文件列表 ([e0d50fd](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/e0d50fd))
+* 更新 changelog 配置，添加调试信息并移除作者信息；调整 commit 模板以简化输出 ([1bf23c5](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/1bf23c5))
+* 更新 changelog 配置，禁用作者姓名和邮箱显示；清理模板文件，移除多余空行 ([5441105](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/5441105))
+* 更新 lint 脚本以修复路径问题，确保 ESLint 正确检查所有文件 ([e0542a6](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/e0542a6))
+* 更新日志标题中的图标，统一使用包图标表示代码重构 ([35089ed](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/35089ed))
+
+
+### 📦 代码重构
+
+* 删除不再使用的 conventional-changelog.js 和 conventional-recommended-bump.js 文件，更新 writer.ts 中的 commit 处理逻辑以增强可读性和可维护性 ([fe46ca0](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/fe46ca0))
+* 增强类型定义，添加 ParserOptions 和 WriterOptions 接口，更新相关函数以提高类型安全性 ([5da15cb](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/5da15cb))
+
+
+### 💥 BREAKING CHANGES
+
+* 重构项目为 TypeScript
+* 项目升级到 esm 模块，并提升最低 Node.js 版本到 18
+
 ## [2.1.2](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.1.1...v2.1.2) (2024-04-17)
 
 
