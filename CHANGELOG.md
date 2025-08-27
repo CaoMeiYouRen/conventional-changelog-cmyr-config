@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+# [3.0.0-beta.3](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.2...v3.0.0-beta.3) (2025-08-27)
+
+
+### ⏪ 回退
+
+* "fix: 确保 context.date 是有效的 Date 对象或字符串，添加日期转换逻辑" ([a355e94](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/a355e94))
+
 # [3.0.0-beta.2](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0-beta.1...v3.0.0-beta.2) (2025-08-27)
 
 
