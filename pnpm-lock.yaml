@@ -31,8 +31,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1(@types/node@24.3.0)(typescript@5.9.2)
       commitlint-config-cmyr:
-        specifier: 1.0.0-beta.2
-        version: 1.0.0-beta.2
+        specifier: 1.0.0
+        version: 1.0.0
       conventional-changelog-cli:
         specifier: ^5.0.0
         version: 5.0.0(conventional-commits-filter@5.0.0)
@@ -43,8 +43,8 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       cz-conventional-changelog-cmyr:
-        specifier: 2.0.0-beta.2
-        version: 2.0.0-beta.2(@types/node@24.3.0)(commitizen@4.3.1(@types/node@24.3.0)(typescript@5.9.2))(typescript@5.9.2)
+        specifier: 2.0.0
+        version: 2.0.0(@types/node@24.3.0)(commitizen@4.3.1(@types/node@24.3.0)(typescript@5.9.2))(typescript@5.9.2)
       eslint:
         specifier: ^9.34.0
         version: 9.34.0(jiti@2.5.1)
@@ -968,8 +968,8 @@ packages:
     engines: {node: '>= 12'}
     hasBin: true
 
-  commitlint-config-cmyr@1.0.0-beta.2:
-    resolution: {integrity: sha512-q6m2kWXFvaKx73qBHtM/YwmZwLFGp1owEiYNbBov++IXmk5bPguNy8xYk+J9B0DzWjwE3v3oJzQv2ucvSeG47w==}
+  commitlint-config-cmyr@1.0.0:
+    resolution: {integrity: sha512-Tz+D9EUe0qq1/xkkPoSELol8sHF2pf0ziBN5zLSdgqfFG1kBFMYtJmi+UP78ehSBZGn1jrwmk2Qu9pFE8DWgJg==}
     engines: {node: '>=18'}
 
   compare-func@2.0.0:
@@ -1127,8 +1127,8 @@ packages:
     resolution: {integrity: sha512-/fITjgjGU50vjQ4FH6eUoYu+iUoUKIXws2hL15JJpIR+BbTxaXQsMuuyjtNh2WqsSBS5nsaZHFsFecyw5CCAng==}
     engines: {node: '>=0.10.0'}
 
-  cz-conventional-changelog-cmyr@2.0.0-beta.2:
-    resolution: {integrity: sha512-hsDqtfBURw84FvjECAPEJ/VTAxWdDpiC+Vy/+lNzDV+ke7bD+1YpY9F6ij2CY8N8UD/UkxbpPs9R5dGrdIGH+A==}
+  cz-conventional-changelog-cmyr@2.0.0:
+    resolution: {integrity: sha512-6Ryuw5WLq8K/VqL7GQP9fjxIAElp0OBXp+Faea39r4UaBQrddpJqerZvb/W2PYKA3FFDmOIHfGbIa7NgQri/4Q==}
     engines: {node: '>=18'}
     peerDependencies:
       commitizen: '>=4.0.0'
@@ -4888,7 +4888,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  commitlint-config-cmyr@1.0.0-beta.2:
+  commitlint-config-cmyr@1.0.0:
     dependencies:
       '@commitlint/config-conventional': 19.8.1
 
@@ -5088,9 +5088,10 @@ snapshots:
     dependencies:
       array-find-index: 1.0.2
 
-  cz-conventional-changelog-cmyr@2.0.0-beta.2(@types/node@24.3.0)(commitizen@4.3.1(@types/node@24.3.0)(typescript@5.9.2))(typescript@5.9.2):
+  cz-conventional-changelog-cmyr@2.0.0(@types/node@24.3.0)(commitizen@4.3.1(@types/node@24.3.0)(typescript@5.9.2))(typescript@5.9.2):
     dependencies:
       '@commitlint/load': 19.8.1(@types/node@24.3.0)(typescript@5.9.2)
+      '@commitlint/types': 19.8.1
       '@lint-md/core': 2.0.0
       chalk: 4.1.2
       commitizen: 4.3.1(@types/node@24.3.0)(typescript@5.9.2)
