@@ -3,38 +3,25 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
-          version: "latest"
+          version: "11"
       - name: Setup Node.js@lts environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: "lts/*"
           cache: "pnpm"
       - run: pnpm i --frozen-lockfile
       - run: pnpm run lint
+      - run: pnpm run test
       - run: pnpm run build
-  auto-merge:
-    needs: test
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    if: |
-      github.actor == 'dependabot[bot]' &&
-      github.event_name == 'pull_request' &&
-      contains(github.event.pull_request.labels.*.name, 'dependencies')
-    steps:
-      - uses: fastify/github-action-merge-dependabot@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          target: minor
-          merge-method: rebase

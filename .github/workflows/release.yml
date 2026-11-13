@@ -12,20 +12,21 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
-          version: "latest"
+          version: "11"
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: "lts/*"
           cache: "pnpm"
       - run: pnpm i --frozen-lockfile
       - run: pnpm run lint
+      - run: pnpm run test
       - run: pnpm run build
       - env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

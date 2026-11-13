@@ -1,0 +1,16 @@
+# Mergify 自动合并 Dependabot 的常规依赖升级（patch / minor）。
+# check-success 匹配 workflow job 名（.github/workflows/test.yml 的 job 名为 Test）。
+pull_request_rules:
+  - name: automatic merge for Dependabot pull requests
+    conditions:
+      - base=master
+      - author~=^dependabot(|-preview)\[bot\]$
+      - label=dependencies
+      - -draft
+      - check-success=Test
+      # 发布链路配置不进入自动合并
+      - -files~=^release\.config\.mjs$
+      - -files~=^\.github/workflows/release\.yml$
+    actions:
+      merge:
+        method: rebase
