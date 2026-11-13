@@ -39,6 +39,15 @@
 yarn add conventional-changelog-cmyr-config
 ```
 
+## 兼容性
+
+`conventional-changelog-cmyr-config@3.1.0` 起同时兼容：
+
+-   `conventional-changelog-writer@8`（`conventional-changelog@7`）
+-   `conventional-changelog-writer@9`（`conventional-changelog@8`，需要 Node.js >= 22）
+
+3.0.0 及更早版本仅支持 writer 8；使用 `conventional-changelog@8` 时会报 `headerPartial is not a function`。
+
 ## 配置
 
 在 package.json 中配置参数

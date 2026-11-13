@@ -2,6 +2,7 @@ import { readFile } from 'fs/promises'
 import { resolve } from 'path'
 import compareFunc from 'compare-func'
 import debug from 'debug'
+import Handlebars from 'handlebars'
 
 const log = debug('conventional-changelog:cmyr-config')
 const COMMIT_HASH_LENGTH = 7
@@ -168,6 +169,7 @@ async function loadConfig(): Promise<{
 
 export interface WriterOptions {
     mainTemplate?: string
+    template?: (context: any) => string
     headerPartial?: string
     commitPartial?: string
     footerPartial?: string
@@ -188,10 +190,10 @@ export async function createWriterOpts(): Promise<WriterOptions> {
         commit,
         footer,
     ] = await Promise.all([
-        readFile(resolve(__dirname, '../templates/template.hbs'), 'utf-8'),
-        readFile(resolve(__dirname, '../templates/header.hbs'), 'utf-8'),
-        readFile(resolve(__dirname, '../templates/commit.hbs'), 'utf-8'),
-        readFile(resolve(__dirname, '../templates/footer.hbs'), 'utf-8'),
+        readFile(new URL('../templates/template.hbs', import.meta.url), 'utf-8'),
+        readFile(new URL('../templates/header.hbs', import.meta.url), 'utf-8'),
+        readFile(new URL('../templates/commit.hbs', import.meta.url), 'utf-8'),
+        readFile(new URL('../templates/footer.hbs', import.meta.url), 'utf-8'),
     ])
 
     const writerOpts = getWriterOpts(config, settings)
@@ -201,13 +203,20 @@ export async function createWriterOpts(): Promise<WriterOptions> {
     writerOpts.commitPartial = commit
     writerOpts.footerPartial = footer
 
+    // conventional-changelog-writer@9 起模板改为函数，且 mainTemplate 被 template 取代。
+    // 保留字符串模板供 writer 8 使用，同时用同一份模板编译出 writer 9 所需的 template。
+    const hbs = Handlebars.create()
+    hbs.registerPartial('header', header)
+    hbs.registerPartial('commit', commit)
+    hbs.registerPartial('footer', footer)
+    writerOpts.template = hbs.compile(template, { noEscape: true })
+
     return writerOpts
 }
 
 function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterOptions {
     return {
         transform: (commit, context) => {
-            let discard = true
             const issues: string[] = []
             log('commit：%s', commit)
 
@@ -219,9 +228,6 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
                 ...note,
                 title: '💥 BREAKING CHANGES',
             }))
-            if (newCommit.notes.length > 0) {
-                discard = false
-            }
 
             // 处理 commit 类型
             if (newCommit.revert) {
