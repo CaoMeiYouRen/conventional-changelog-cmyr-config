@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+# [3.1.0](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0...v3.1.0) (2026-11-13)
+
+
+### ✨ 新功能
+
+* 兼容 conventional-changelog-writer@9 ([94a0057](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/94a0057))
+
 # [3.0.0](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v2.1.2...v3.0.0) (2025-08-27)
 
 
