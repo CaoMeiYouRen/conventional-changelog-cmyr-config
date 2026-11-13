@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+## [3.1.2](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.1.1...v3.1.2) (2026-11-13)
+
+
+### 🐛 Bug 修复
+
+* **deps:** 清理 Dependabot 安全告警 ([cf0208d](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/cf0208d))
+
 ## [3.1.1](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.1.0...v3.1.1) (2026-11-13)
 
 
