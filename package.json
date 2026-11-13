@@ -73,7 +73,7 @@
     "@types/debug": "^4.1.13",
     "@types/node": "^24.3.0",
     "commitizen": "^4.3.1",
-    "commitlint-config-cmyr": "1.0.0",
+    "commitlint-config-cmyr": "1.0.1",
     "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-writer-8": "npm:conventional-changelog-writer@^8.4.0",
     "conventional-changelog-writer-9": "npm:conventional-changelog-writer@^9.3.0",
