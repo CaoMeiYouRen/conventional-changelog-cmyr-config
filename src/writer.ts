@@ -124,17 +124,20 @@ const requiredOptions = ['feat', 'fix', 'perf', 'revert', 'refactor']
 const optionalOptions = ['docs', 'style', 'test', 'build', 'ci', 'chore']
 
 // 读取package.json配置
-async function loadConfig(): Promise<{
+export async function loadConfig(cwd = process.cwd()): Promise<{
     config: ChangelogConfig
     settings: TypeSettings
 }> {
     let pkgJson: { changelog?: ChangelogConfig } = {}
 
     try {
-        const pkgJsonContent = await readFile(resolve(process.cwd(), './package.json'), 'utf-8')
+        const pkgJsonContent = await readFile(resolve(cwd, './package.json'), 'utf-8')
         pkgJson = JSON.parse(pkgJsonContent)
-    } catch {
-        console.error('no root package.json found')
+    } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+            throw error
+        }
+        log('no root package.json found')
     }
 
     const changelog = pkgJson.changelog || {}
