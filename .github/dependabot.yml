@@ -1,5 +1,3 @@
-# 常规版本更新只放行 patch / minor；major 由人工评估后发起（例如 conventional-changelog 大版本升级）。
-# 安全更新不受 allow.update-types 限制。
 version: 2
 updates:
   - package-ecosystem: npm
@@ -11,11 +9,6 @@ updates:
       timezone: Asia/Shanghai
     labels:
       - dependencies
-    allow:
-      - dependency-type: all
-        update-types:
-          - version-update:semver-patch
-          - version-update:semver-minor
   - package-ecosystem: github-actions
     directory: /
     open-pull-requests-limit: 20

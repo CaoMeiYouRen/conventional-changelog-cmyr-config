@@ -1,5 +1,6 @@
 name: Release
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -31,10 +32,6 @@ jobs:
         with:
           node-version: "lts/*"
           cache: "pnpm"
-          registry-url: "https://registry.npmjs.org"
-      # Trusted publishing requires npm 11.5.1 or later
-      - name: Update npm
-        run: npm install -g npm@latest
       - run: pnpm i --frozen-lockfile
       - run: pnpm run lint
       - run: pnpm run typecheck
