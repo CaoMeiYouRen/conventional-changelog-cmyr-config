@@ -173,12 +173,46 @@ export interface WriterOptions {
     headerPartial?: string
     commitPartial?: string
     footerPartial?: string
-    transform: (commit: any, context: any) => any
+    transform: (commit: Commit, context: WriterContext) => Commit | undefined
     groupBy: string
     commitGroupsSort: string
     commitsSort: string[]
     noteGroupsSort: string
-    notesSort: (prop: any) => (a: any, b: any) => number
+    notesSort: (a: any, b: any) => number
+}
+
+interface CommitNote {
+    title?: string
+    text?: string
+    [key: string]: unknown
+}
+
+interface CommitReference {
+    issue: string
+    prefix?: string
+    owner?: string | null
+    repository?: string | null
+    bugsUrl?: string
+    [key: string]: unknown
+}
+
+interface Commit {
+    type: string
+    scope?: string
+    subject?: string
+    header?: string
+    hash?: string
+    notes: CommitNote[]
+    references: CommitReference[]
+    revert?: unknown
+    [key: string]: unknown
+}
+
+interface WriterContext {
+    repository?: string
+    repoUrl?: string
+    host?: string
+    owner?: string
 }
 
 export async function createWriterOpts(): Promise<WriterOptions> {
@@ -263,7 +297,7 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
                 if (url) {
                     url = `${url}/issues/`
                     // Issue URLs.
-                    newCommit.subject = newCommit.subject.replace(/#([0-9]+)/g, (_, issue) => {
+                    newCommit.subject = newCommit.subject.replace(/#([0-9]+)/g, (_match: string, issue: string) => {
                         issues.push(issue)
                         return `[#${issue}](${url}${issue})`
                     })
@@ -273,7 +307,7 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
                     // User URLs.
                     newCommit.subject = newCommit.subject.replace(
                         /\B@([a-z0-9](?:-?[a-z0-9/]){0,38})/g,
-                        (_, username) => {
+                        (_match: string, username: string) => {
                             if (username.includes('/')) {
                                 return `@${username}`
                             }
@@ -287,9 +321,10 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
             newCommit.references = commit.references.filter((reference) => issues.indexOf(reference.issue) === -1)
 
             if (config.bugsUrl) {
+                const bugsUrl = config.bugsUrl
                 newCommit.references = newCommit.references.map((ref) => ({
                     ...ref,
-                    bugsUrl: config.bugsUrl,
+                    bugsUrl,
                 }))
             }
 
@@ -299,6 +334,6 @@ function getWriterOpts(config: ChangelogConfig, settings: TypeSettings): WriterO
         commitGroupsSort: 'title',
         commitsSort: ['scope', 'subject'],
         noteGroupsSort: 'title',
-        notesSort: compareFunc,
+        notesSort: compareFunc('text'),
     }
 }

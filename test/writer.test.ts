@@ -3,6 +3,7 @@ import { writeChangelogString as writeWithWriter9 } from 'conventional-changelog
 import { describe, expect, it } from 'vitest'
 import { createWriterOpts } from '../src/writer'
 
+
 const commits = [
     {
         type: 'feat',
@@ -11,7 +12,7 @@ const commits = [
         header: 'feat(core): add new API',
         hash: 'abcdef1234567890',
         notes: [],
-        references: [{ issue: '12', prefix: '#', owner: null, repository: null }],
+        references: [{ raw: '#12', action: 'closes', issue: '12', prefix: '#', owner: null, repository: null }],
     },
     {
         type: 'fix',
@@ -20,7 +21,7 @@ const commits = [
         header: 'fix(*): fix crash',
         hash: '1234567890abcdef',
         notes: [],
-        references: [{ issue: '7', prefix: '#', owner: 'someowner', repository: 'somerepo' }],
+        references: [{ raw: '#7', action: 'closes', issue: '7', prefix: '#', owner: 'someowner', repository: 'somerepo' }],
     },
     {
         type: 'docs',
@@ -52,6 +53,10 @@ const commits = [
     },
 ]
 
+type Commit = (typeof commits)[number]
+type Writer8Options = NonNullable<Parameters<typeof writeWithWriter8<Commit>>[2]>
+type Writer9Options = NonNullable<Parameters<typeof writeWithWriter9<Commit>>[2]>
+
 const context = {
     version: '4.0.0',
     isPatch: false,
@@ -72,15 +77,15 @@ describe('writer 兼容性', () => {
     it('writer 8 与 writer 9 输出完全一致', async () => {
         const writerOpts = await createWriterOpts()
 
-        const output8 = await writeWithWriter8(commits, context, writerOpts)
-        const output9 = await writeWithWriter9(commits, context, writerOpts)
+        const output8 = await writeWithWriter8(commits, context, writerOpts as unknown as Writer8Options)
+        const output9 = await writeWithWriter9(commits, context, writerOpts as unknown as Writer9Options)
 
         expect(output9).toBe(output8)
     })
 
     it('保留分组、链接与 breaking changes，并过滤默认关闭的类型', async () => {
         const writerOpts = await createWriterOpts()
-        const output = await writeWithWriter9(commits, context, writerOpts)
+        const output = await writeWithWriter9(commits, context, writerOpts as unknown as Writer9Options)
 
         expect(output).toContain('### ✨ 新功能')
         expect(output).toContain('### 🐛 Bug 修复')
