@@ -83,7 +83,7 @@
     "eslint-config-cmyr": "2.0.0-beta.15",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.5",
-    "semantic-release": "^24.2.7",
+    "semantic-release": "^25.0.9",
     "semantic-release-cmyr-config": "1.0.0-beta.2",
     "tsdown": "^0.23.7",
     "typescript": "^5.9.2",
