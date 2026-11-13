@@ -78,7 +78,7 @@
     "conventional-changelog-writer-8": "npm:conventional-changelog-writer@^8.4.0",
     "conventional-changelog-writer-9": "npm:conventional-changelog-writer@^9.3.0",
     "cross-env": "^10.1.0",
-    "cz-conventional-changelog-cmyr": "2.0.0",
+    "cz-conventional-changelog-cmyr": "2.0.1",
     "eslint": "^9.34.0",
     "eslint-config-cmyr": "2.0.0-beta.15",
     "husky": "^9.1.7",
