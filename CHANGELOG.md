@@ -1,5 +1,12 @@
 # conventional-changelog-cmyr-config
 
+## [3.1.1](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.1.0...v3.1.1) (2026-11-13)
+
+
+### 🐛 Bug 修复
+
+* 避免 package.json 解析失败被静默忽略 ([48ea1fa](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/commit/48ea1fa))
+
 # [3.1.0](https://github.com/CaoMeiYouRen/conventional-changelog-cmyr-config/compare/v3.0.0...v3.1.0) (2026-11-13)
 
 
